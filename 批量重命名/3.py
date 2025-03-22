@@ -1,4 +1,4 @@
-#删除文件中多余的内容
+#删除文件中多余的内容，并删除非文字内容
 import os
 from bs4 import BeautifulSoup
 from html import unescape
@@ -10,7 +10,7 @@ for filename in os.listdir('.'):
         content = f.read()
         content = str(content)
         #content = content[170:-98]
-        soup = BeautifulSoup(unescape(content), 'lxml')
+        soup = BeautifulSoup(unescape(content), 'lxml')#删除html字符
         content = soup.text
         content.replace('>','')
     with open(filename, 'w', encoding='utf-8', errors='ignore') as f:
